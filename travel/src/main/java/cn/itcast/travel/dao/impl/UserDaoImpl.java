@@ -29,7 +29,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void save(User user) {
         //1.定义sql
-        String sql = "insert into tab_user(username,password,name,birthday,sex,telephone,email,status,code) values(?,?,?,?,?,?,?,?,?)";
+        String sql = "insert into tab_user(username,password,name,birthday,sex,telephone,email) values(?,?,?,?,?,?,?)";
         //2.执行sql
 
         template.update(sql,user.getUsername(),
@@ -38,9 +38,7 @@ public class UserDaoImpl implements UserDao {
                 user.getBirthday(),
                 user.getSex(),
                 user.getTelephone(),
-                user.getEmail(),
-                user.getStatus(),
-                user.getCode()
+                user.getEmail()
                 );
     }
 
@@ -63,15 +61,6 @@ public class UserDaoImpl implements UserDao {
         return user;
     }
 
-    /**
-     * 修改指定用户激活状态
-     * @param user
-     */
-    @Override
-    public void updateStatus(User user) {
-        String sql = " update tab_user set status = 'Y' where uid=?";
-        template.update(sql,user.getUid());
-    }
 
     /**
      * 根据用户名和密码查询的方法

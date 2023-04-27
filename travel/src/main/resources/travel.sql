@@ -92,12 +92,10 @@ create table tab_user
    sex                  char(1),
    telephone            varchar(11),
    email                varchar(100),
-   status               char(1) ,
-   code					varchar(50),
+
    
    primary key (uid),
-   unique key AK_nq_username (username),
-   unique key AK_nq_code (code)
+   unique key AK_nq_username (username)
 );
 
 alter table tab_favorite add constraint FK_route_favorite foreign key (rid)

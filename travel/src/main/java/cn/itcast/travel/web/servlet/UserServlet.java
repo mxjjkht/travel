@@ -122,14 +122,8 @@ public class UserServlet extends BaseServlet {
             info.setFlag(false);
             info.setErrorMsg("用户名密码或错误");
         }
-        //5.判断用户是否激活
-        if(u != null && !"Y".equals(u.getStatus())){
-            //用户尚未激活
-            info.setFlag(false);
-            info.setErrorMsg("您尚未激活，请激活");
-        }
-        //6.判断登录成功
-        if(u != null && "Y".equals(u.getStatus())){
+        //5.判断登录成功
+        if(u != null ){
             request.getSession().setAttribute("user",u);//登录成功标记
 
             //登录成功
@@ -183,25 +177,26 @@ public class UserServlet extends BaseServlet {
      * @throws ServletException
      * @throws IOException
      */
-    public void active(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //1.获取激活码
-        String code = request.getParameter("code");
-        if(code != null){
-            //2.调用service完成激活
-            //UserService service = new UserServiceImpl();
-            boolean flag = service.active(code);
-
-            //3.判断标记
-            String msg = null;
-            if(flag){
-                //激活成功
-                msg = "激活成功，请<a href='login.html'>登录</a>";
-            }else{
-                //激活失败
-                msg = "激活失败，请联系管理员!";
-            }
-            response.setContentType("text/html;charset=utf-8");
-            response.getWriter().write(msg);
-        }
-    }
+////
+//    public void active(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        //1.获取激活码
+//        String code = request.getParameter("code");
+//        if(code != null){
+//            //2.调用service完成激活
+//            //UserService service = new UserServiceImpl();
+//            boolean flag = service.active(code);
+//
+//            //3.判断标记
+//            String msg = null;
+//            if(flag){
+//                //激活成功
+//                msg = "激活成功，请<a href='login.html'>登录</a>";
+//            }else{
+//                //激活失败
+//                msg = "激活失败，请联系管理员!";
+//            }
+//            response.setContentType("text/html;charset=utf-8");
+//            response.getWriter().write(msg);
+//        }
+//    }
 }

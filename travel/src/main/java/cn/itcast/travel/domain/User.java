@@ -14,8 +14,6 @@ public class User implements Serializable {
     private String sex;//男或女
     private String telephone;//手机号
     private String email;//邮箱
-    private String status;//激活状态，Y代表激活，N代表未激活
-    private String code;//激活码（要求唯一）
 
     /**
      * 无参构造方法
@@ -33,10 +31,8 @@ public class User implements Serializable {
      * @param sex
      * @param telephone
      * @param email
-     * @param status
-     * @param code
      */
-    public User(int uid, String username, String password, String name, String birthday, String sex, String telephone, String email, String status, String code) {
+    public User(int uid, String username, String password, String name, String birthday, String sex, String telephone, String email) {
         this.uid = uid;
         this.username = username;
         this.password = password;
@@ -45,8 +41,6 @@ public class User implements Serializable {
         this.sex = sex;
         this.telephone = telephone;
         this.email = email;
-        this.status = status;
-        this.code = code;
     }
 
     public int getUid() {
@@ -113,19 +107,4 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
 }
